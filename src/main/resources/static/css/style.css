@@ -1,0 +1,374 @@
+/* =========================================
+   1. ΒΑΣΙΚΗ ΔΟΜΗ (LAYOUT)
+========================================= */
+* {
+    box-sizing: border-box; /* ΣΩΤΗΡΙΟ: Δεν αφήνει τα borders να χαλάνε τα μεγέθη! */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding-top: 15px;
+}
+
+.main-layout {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    padding: 20px;
+    max-width: 95vw; 
+    margin: 0 auto;
+}
+
+/* =========================================
+   2. ΑΡΙΣΤΕΡΗ ΣΤΗΛΗ (ΛΙΣΤΑ ΕΡΓΑΣΙΩΝ)
+========================================= */
+.task-column {
+    flex: 0 0 10%; 
+    
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    height: 100%; /* Απλώνεται μέχρι κάτω αν χρειαστεί */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 12px;
+    background-color: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+select {
+    cursor: pointer;
+}
+
+/* Ωραίο εφέ όταν κάνεις κλικ για να γράψεις ή να επιλέξεις */
+input:focus, select:focus {
+    outline: none;
+    border-color: #28a745; /* Πράσινο για να ταιριάζει με το Add κουμπί */
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+}
+
+.add-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background: #e9ecef;
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* =========================================
+   3. ΔΕΞΙΑ ΣΤΗΛΗ (ΗΜΕΡΟΛΟΓΙΟ - 80%)
+========================================= */
+.calendar-column {
+    flex: 1;
+}
+
+.calendar {
+    background-color: #111111;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    width: 100%;
+    min-height: 80vh;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 10px;
+}
+
+#month-year {
+    font-weight: bold;
+    font-size: 24px; /* Πιο μεγάλο για να ταιριάζει στο τεράστιο ημερολόγιο */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#month-year:hover {
+    color: orangered;
+}
+
+/* ΕΔΩ ΗΤΑΝ ΤΟ ΛΑΘΟΣ: Πρέπει και τα δύο να έχουν flex-wrap */
+.weekdays, .days {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.days {
+    flex: 1;
+    align-content: flex-start; /* Στοιχίζει τις εβδομάδες από πάνω προς τα κάτω */
+}
+
+.weekdays div, .days div {
+    width: 14.28%; /* 100% / 7 ημέρες */
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+.days div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 120px;
+    font-size: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.05); /* Ελαφρύ περίγραμμα μεταξύ ημερών */
+}
+
+/* Εφέ Hover στις μέρες του τρέχοντος μήνα */
+.days div:not(.fade):hover {
+    background-color: white;
+    color: orangered;
+}
+
+.days .today {
+    background-color: orangered;
+    color: white;
+}
+
+.days div.selected {
+    background-color: white;
+    color: orangered;
+    font-weight: bold;
+}
+
+/* Ημέρες προηγούμενου/επόμενου μήνα */
+.days .fade {
+    color: #555;
+}
+
+.days div.fade:hover {
+    background-color: transparent;
+    color: #555;
+    cursor: default;
+}
+
+/* Προβολή Μηνών και Ετών */
+.days.view-months div, .days.view-years div {
+    width: 25%; /* 4 στήλες */
+    height: 150px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.days.view-months div:hover, .days.view-years div:hover {
+    background-color: white;
+    color: orangered;
+}
+
+.category-badge {
+    display: inline-block;
+    background-color: #e0f2fe; /* Απαλό γαλάζιο */
+    color: #0284c7; /* Σκούρο μπλε */
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 3px;
+    font-weight: 600;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Σκοτεινό ημιδιαφανές φόντο */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Να είναι πάνω από όλα τα άλλα στοιχεία */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f2f5;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #2c3e50;
+}
+
+.close-modal {
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #95a5a6;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: #e74c3c;
+}
+
+.modal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px; /* Αν έχεις πολλές, θα βγάλει scrollbar */
+    overflow-y: auto;
+}
+
+.modal-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+    border-bottom: 1px solid #f0f2f5;
+    background: transparent;
+    margin-bottom: 0;
+}
+
+.modal-list li:last-child {
+    border-bottom: none;
+}
+
+.modal-list li span {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 95vw;
+    margin: 0 auto 10px auto; /* Κεντράρισμα και λίγο κενό από κάτω */
+    padding: 0 20px;
+}
+
+.stat-card {
+    background: white;
+    flex: 1; /* Για να έχουν όλα ακριβώς το ίδιο πλάτος */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Εφέ όταν περνάει το ποντίκι από πάνω */
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.stat-title {
+    font-size: 1rem;
+    color: #777;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333; /* Προεπιλεγμένο χρώμα για τα συνολικά */
+}
+
+/* Χρώματα για να ξεχωρίζουν (χρησιμοποίησα τα χρώματα που ήδη έχεις στο theme σου) */
+.color-completed { color: #28a745; } /* Πράσινο */
+.color-pending { color: orangered; } /* Το πορτοκαλί που έχεις και στο ημερολόγιο */
+.color-expired { color: #dc3545; } /* Κόκκινο */

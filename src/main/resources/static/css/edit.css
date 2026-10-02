@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.main-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.edit-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-left: 8px;
+}
+
+.edit-btn:hover {
+    background-color: #2980b9;
+}
+
+.edit-btn:active {
+    transform: scale(0.95);
+}
+
+.edit-btn + .edit-btn {
+    background-color: #e74c3c;
+}
+
+.edit-btn + .edit-btn:hover {
+    background-color: #c0392b;
+}
+
+.details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.details li {
+    margin-bottom: 20px;
+}
+
+.details label {
+    display: block;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+#title, #description, #dueDate, #status, #categoryView {
+    background-color: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.details input[type="text"],
+.details input[type="date"],
+.details select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #334155;
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.details select {
+    cursor: pointer;
+}
+
+.details input[type="text"]:focus,
+.details input[type="date"]:focus,
+.details select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.details input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: #3498db;
+}
+
+.details span {
+    font-size: 1rem;
+    color: #334155;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: #95a5a6;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.back-link:hover {
+    color: #3498db;
+    transform: translateX(-3px);
+}
+
+.category-badge {
+    display: inline-block;
+    background-color: #e0f2fe;
+    color: #0284c7;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 3px;
+    font-weight: 600;
+}
+
+.add-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}

@@ -1,0 +1,102 @@
+/* Επαναφορά βασικών περιθωρίων */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Σκοτεινό, μοντέρνο background για όλη τη σελίδα */
+body {
+    background-color: #0f172a; /* Βαθύ μπλε-γκρι */
+    color: #f8fafc;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Το κεντρικό "κουτί" που περιέχει τα πάντα */
+.content-box {
+    background-color: #1e293b;
+    padding: 3rem 4rem;
+    border-radius: 16px;
+    border: 1px solid #334155;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    transition: transform 0.3s ease;
+}
+
+/* Ένα μικρό εφέ όταν ο χρήστης περνάει το ποντίκι πάνω από την κάρτα */
+.content-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Το εικονίδιο / Logo */
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Ο κεντρικός τίτλος */
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #e2e8f0;
+    letter-spacing: -0.5px;
+}
+
+/* Το κείμενο περιγραφής */
+.subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #94a3b8;
+    margin-bottom: 2.5rem;
+}
+
+/* Διάταξη για τα κουμπιά (Flexbox για να είναι δίπλα-δίπλα) */
+.action-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/* Βασικό στυλ για όλα τα κουμπιά */
+.btn {
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    width: 180px;
+}
+
+/* Κουμπί Εισόδου (Primary) με έντονο χρώμα */
+.btn-primary {
+    background-color: #3b82f6; /* Μπλε */
+    color: white;
+    border: 2px solid #3b82f6;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+/* Κουμπί Εγγραφής (Secondary) διαφανές */
+.btn-secondary {
+    background-color: transparent;
+    color: #cbd5e1;
+    border: 2px solid #475569;
+}
+
+.btn-secondary:hover {
+    background-color: #475569;
+    color: white;
+}

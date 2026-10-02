@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Επεξεργασία Εργασίας</title>
+    <!-- Συνδέουμε το ίδιο CSS για να κρατήσουμε την εμφάνιση -->
+    <link rel="stylesheet" href="css/edit.css">
+</head>
+<body>
+    <div class="main-layout">
+        <div class="container" style="margin: 0 auto; width: 100%; max-width: 500px;">
+            <a href="tasks.html" class="back-link">← Επιστροφή</a>
+            <div class="header">
+                <h1>Επεξεργασία Εργασίας</h1>
+                <div>
+                    <button class="edit-btn" onclick="editTask()">Edit</button>
+                    <button class="edit-btn" onclick="deleteCurrentTask()">Διαγραφή</button>
+                </div>
+            </div>
+            <ul class="details"></ul>
+            
+        </div>
+    </div>
+    <script src="js/edit.js"></script>
+</body>
+</html>
